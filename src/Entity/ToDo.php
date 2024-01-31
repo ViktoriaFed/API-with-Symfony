@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ToDoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ToDoRepository::class)]
 class ToDo
@@ -16,6 +17,9 @@ class ToDo
 
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)] //trying the validation
+
 
     #[ORM\Column(length: 255)]
     private ?string $Description = null;
